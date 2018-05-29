@@ -12,6 +12,7 @@ public class MenuButtonBehaviour : MonoBehaviour {
 
     public void LoadScene(int id)
     {
+        PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
         SceneManager.LoadScene(id);
     }
 
@@ -19,5 +20,18 @@ public class MenuButtonBehaviour : MonoBehaviour {
     {
         Debug.Log("Salir de la aplicación");
         Application.Quit();
+    }
+
+    public void LoadPreviousScene()
+    {
+        string previousScene = PlayerPrefs.GetString("lastLoadedScene");
+        if (previousScene != null)
+        {
+            SceneManager.LoadScene(previousScene);
+        }
+        else
+        {
+            Debug.Log("No hay escena previa");
+        }
     }
 }
