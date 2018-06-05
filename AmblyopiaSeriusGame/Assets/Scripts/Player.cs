@@ -3,12 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-    public float jumpForce = 10f;
+    public float speed = 1f;
     public Rigidbody2D rb;
    
 
     void Update () {
-		
+        transform.Translate(speed*Time.deltaTime, 0, 0);
 	}
 
     void OnTriggerEnter2D (Collider2D col)
