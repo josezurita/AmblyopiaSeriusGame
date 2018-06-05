@@ -10,10 +10,10 @@ public class MenuButtonBehaviour : MonoBehaviour {
 		
 	}
 
-    public void LoadScene(int id)
+    public void LoadScene(string sceneName)
     {
         PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene(id);
+        SceneManager.LoadScene(sceneName);
     }
 
     public void ExitButtonPressed()
