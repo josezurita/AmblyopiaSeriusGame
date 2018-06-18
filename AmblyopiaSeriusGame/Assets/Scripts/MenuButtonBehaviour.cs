@@ -1,14 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuButtonBehaviour : MonoBehaviour {
 
+    public GUISkin guiSkin;
+
 	// Use this for initialization
 	void Start () {
-		
-	}
+        string currentScene = SceneManager.GetActiveScene().name;
+        switch (currentScene)
+        {
+            case "MainMenu":
+                HidePopUp("InfoPanel");
+                break;
+            case "":
+                Debug.Log("Aquí los popUps de la escena correspondiente");
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void OnGUI()
+    {
+        GUI.skin = guiSkin;
+    }
 
     public void LoadScene(string sceneName)
     {
@@ -33,5 +50,20 @@ public class MenuButtonBehaviour : MonoBehaviour {
         {
             Debug.Log("No hay escena previa");
         }
+    }
+
+    public void HidePopUp(string popUpName)
+    {
+        try
+        {
+            GameObject popUp = GameObject.Find(popUpName);
+            popUp.SetActive(false);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("No se puede ocultar el pop up" + popUpName);
+            Debug.LogException(e);
+        }
+        
     }
 }

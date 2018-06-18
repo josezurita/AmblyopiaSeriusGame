@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MenuButton
   - Circle
+  - PopUp
   layers:
   - Default
   - TransparentFX
