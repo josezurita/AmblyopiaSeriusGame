@@ -6,9 +6,14 @@ public class FollowPlayer : MonoBehaviour {
 
     private void Update()
     {
-        if (player.position.y > transform.position.y  || player.position.y < transform.position.y)
+
+        if (player.position.x > transform.position.x || player.position.x < transform.position.x)
         {
-            transform.position = new Vector3(transform.position.x, player.position.y, transform.position.z);  
+            transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
         }
     }
+
+ 
+
+
 }
