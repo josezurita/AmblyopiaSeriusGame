@@ -13,6 +13,7 @@ public class MenuButtonBehaviour : MonoBehaviour {
         {
             case "MainMenu":
                 HidePopUp("InfoPanel");
+                HidePopUp("HelpPanel");
                 break;
             case "":
                 Debug.Log("Aquí los popUps de la escena correspondiente");
