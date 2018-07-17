@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 312933888}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,11 +306,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   theCircle: {fileID: 1388924205165126, guid: 3f23544773b833449a6589dd286950f9, type: 2}
+  thePlayer: {fileID: 312933887}
   theCircleCollider: {fileID: 1283640772}
   generationPoint: {fileID: 1668089016}
   distanceBetween: 0
-  distanceBetweenMin: 8
-  distanceBetweenMax: 15
+  distanceBetweenMin: 12
+  distanceBetweenMax: 18
   theObjectPool: {fileID: 1411631836}
 --- !u!4 &1086239005
 Transform:

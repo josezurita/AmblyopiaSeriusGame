@@ -28,12 +28,10 @@ public class Player : MonoBehaviour
     private void Start()
     {
         circle1coll = circle1.GetComponent<CircleCollider2D>();
-
     }
     void Update()
 
     {
-        
         transform.Translate(speed * Time.deltaTime, 0, 0);
     }
     private void OnTriggerEnter2D(Collider2D col)
@@ -55,30 +53,25 @@ public class Player : MonoBehaviour
     {
         circlePosition = col.transform.position.x;
         playerPosition = this.transform.position.x;
-        //porcentaje = (1 - System.Math.Abs(System.Convert.ToDouble(circlePosition - playerPosition) / circleRadius)) * 100;
-        porcentaje = (circlePosition - playerPosition);
-        //Debug.Log("DentroS");
-        //        Debug.Log("My Position" + playerPosition);
-        //      Debug.Log("Circle Position" + circlePosition);
-        if (Input.GetMouseButtonDown(0))
+        
+       if (playerPosition <= circlePosition - circleRadius + playerRadius || playerPosition >= circlePosition + circleRadius - playerRadius)
         {
-            clickedOn = true;
-            Debug.Log("clicked");
+            if (Input.GetMouseButtonDown(0))
+            {
+                clickedOn = true;
+                Debug.Log("clicked");
+            }
         }
+            
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("SALIO!!!!!!!!!!!!");
-        Debug.Log("My Position" + playerPosition);
-        Debug.Log("Circle Position" + circlePosition);
-        Debug.Log("DentroEx");
         if (!clickedOn)
         {
             Debug.Log("GAME OVER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11");
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-
-    }
+}
 
     
 
