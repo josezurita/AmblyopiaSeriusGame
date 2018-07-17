@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class Player : MonoBehaviour
 {
 
@@ -8,29 +9,57 @@ public class Player : MonoBehaviour
     public float speed = 1f;
     public ColliderDistance2D colldist;
     public GameObject circle1;
-    public Collider2D circle1coll;
-    public bool changedOverlapped = false;
-    public bool wasOverlapped = false;
+    public CircleCollider2D circle1coll;
+    public float playerPosition;
+    public float circlePosition;
+    //public float circleCollPosition;
+    public float playerScale;
+    public float circleScale;
     public bool clickedOn = false;
+    public float sumaScales;
+    public float distance;
+    public float unidad;
+    public float playerRadius;
+    public float circleRadius;
+    public double porcentaje;
 
 
 
     private void Start()
     {
-        circle1coll = circle1.GetComponent<Collider2D>();
+        circle1coll = circle1.GetComponent<CircleCollider2D>();
 
     }
     void Update()
-    {
-        transform.Translate(speed * Time.deltaTime, 0, 0);
 
+    {
+        
+        transform.Translate(speed * Time.deltaTime, 0, 0);
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
+        playerScale = this.transform.localScale.x;
+        circlePosition = col.transform.position.x;
+        circleScale = col.transform.localScale.x;
+        playerPosition = this.transform.position.x;
         clickedOn = false;
+        sumaScales = playerScale + circleScale;
+        distance = circlePosition - playerPosition;
+        unidad = distance / sumaScales;
+        circleRadius =  unidad * circleScale / 2;
+        playerRadius = unidad * playerScale / 2;
+        
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {  
+
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        circlePosition = col.transform.position.x;
+        playerPosition = this.transform.position.x;
+        //porcentaje = (1 - System.Math.Abs(System.Convert.ToDouble(circlePosition - playerPosition) / circleRadius)) * 100;
+        porcentaje = (circlePosition - playerPosition);
+        //Debug.Log("DentroS");
+        //        Debug.Log("My Position" + playerPosition);
+        //      Debug.Log("Circle Position" + circlePosition);
         if (Input.GetMouseButtonDown(0))
         {
             clickedOn = true;
@@ -39,6 +68,10 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        Debug.Log("SALIO!!!!!!!!!!!!");
+        Debug.Log("My Position" + playerPosition);
+        Debug.Log("Circle Position" + circlePosition);
+        Debug.Log("DentroEx");
         if (!clickedOn)
         {
             Debug.Log("GAME OVER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11");

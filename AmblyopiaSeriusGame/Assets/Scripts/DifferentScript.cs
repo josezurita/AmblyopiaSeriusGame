@@ -11,10 +11,10 @@ public class DifferentScript : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-        Vector3 pos = Camera.main.WorldToScreenPoint()
+        //Vector3 pos = Camera.main.WorldToScreenPoint();
         for (int i = 0; i<numberOfFigures; i++)
         {
-            Instantiate(figura, new Vector3(Random.range(),Random.range()),Quaternion.identity);
+            //Instantiate(figura, new Vector3(Random.range(),Random.range()),Quaternion.identity);
         }
         
     }
