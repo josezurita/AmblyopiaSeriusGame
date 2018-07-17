@@ -6,7 +6,7 @@ public class FigureBehaviour : MonoBehaviour {
 
     private Vector3 randomVector;
     private new Rigidbody2D rigidbody2D;
-    private float magnitud;
+    public float magnitud;
 
     // Use this for initialization
     void Start () {

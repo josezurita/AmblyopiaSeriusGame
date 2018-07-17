@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DifferentScript : MonoBehaviour {
@@ -11,11 +10,13 @@ public class DifferentScript : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-        /*Vector3 pos = Camera.main.WorldToScreenPoint();
+
         for (int i = 0; i<numberOfFigures; i++)
         {
-            //Instantiate(figura, new Vector3(Random.range(),Random.range()),Quaternion.identity);
-        }*/
+            Vector3 screenPosition = Camera.main.ScreenToWorldPoint(new Vector3(UnityEngine.Random.Range(0, Screen.width), UnityEngine.Random.Range(0, Screen.height), Camera.main.farClipPlane / 2));
+            GameObject instance = Instantiate(figura, screenPosition, Quaternion.identity);
+            instance.GetComponent<FigureBehaviour>().magnitud = magnitud;
+        }
         
     }
 	
