@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CircleGenerator : MonoBehaviour {
+public class G1CircleGenerator : MonoBehaviour {
 
     public GameObject theCircle;
     public GameObject thePlayer;
@@ -18,7 +18,7 @@ public class CircleGenerator : MonoBehaviour {
     private float circleScaleMin;
     private float circleScaleMax;
 
-    public ObjectPooler theObjectPool;
+    public G1ObjectPooler theObjectPool;
     
          
     // Use this for initialization
@@ -37,8 +37,8 @@ public class CircleGenerator : MonoBehaviour {
             
             //Instantiate(theCircle, transs form.position, transform.rotation);
             GameObject newCircle = theObjectPool.GetPooledObject();
-            circleScaleMin = thePlayer.transform.localScale.x * (110/100);
-            circleScaleMax = 30;
+            circleScaleMin = thePlayer.transform.localScale.x * (150 / 100);
+            circleScaleMax = thePlayer.transform.localScale.x * (200 / 100);
             circleScale = Random.Range(circleScaleMin, circleScaleMax);
 
             newCircle.transform.position = transform.position;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPooler : MonoBehaviour {
+public class G1ObjectPooler : MonoBehaviour {
 
     public GameObject pooledObject;
     public int pooledAmount;

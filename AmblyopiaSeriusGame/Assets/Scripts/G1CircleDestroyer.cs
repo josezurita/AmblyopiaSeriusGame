@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CircleDestroyer : MonoBehaviour {
+public class G1CircleDestroyer : MonoBehaviour {
 
     public GameObject circleDestructionPoint;
 
