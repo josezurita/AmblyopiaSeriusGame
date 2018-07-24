@@ -16,6 +16,11 @@ public class G1ScoreManager : MonoBehaviour {
     public bool scoreIncreasing;
     // Use this for initialization
     void Start () {
+
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            highScoreCount = PlayerPrefs.GetFloat("HighScore");
+        }
 		
 	}
 	
@@ -25,13 +30,14 @@ public class G1ScoreManager : MonoBehaviour {
         if (scoreIncreasing)
         {
 
-            scoreCount += pointsPerSecond * Time.deltaTime / 5;
+            scoreCount += pointsPerSecond * Time.deltaTime;
 
         }
 
         if (scoreCount > highScoreCount)
         {
             highScoreCount = scoreCount;
+            PlayerPrefs.SetFloat("HighScore",highScoreCount);//Guardar El HighScore
         }
 
         scoreText.text = "Score: " + (int)scoreCount;
