@@ -4,10 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class G1Player : MonoBehaviour
 {
-    public float speed = 1f;
+    public float moveSpeed;
+    private float moveSpeedStore;
+
     public float speedMultiplier;
+
     public float speedIncreaseMilestone;
+    private float speedIncreaseMilestoneStore;
+    
     private float speedMilestoneCount;
+    private float speedMilestoneCountStore;
+
 
     public bool clickedOn = false;
 
@@ -25,14 +32,19 @@ public class G1Player : MonoBehaviour
     public float playerRadius;
     public float circleRadius;
 
-
+    public G1GameManager theGameManager;
 
 
 
     private void Start()
     {
         circle1coll = circle1.GetComponent<CircleCollider2D>();
+        
         speedMilestoneCount = speedIncreaseMilestone;
+        moveSpeedStore = moveSpeed;
+        speedMilestoneCountStore = speedMilestoneCount;
+        speedIncreaseMilestoneStore = speedIncreaseMilestone;
+
     }
     void Update()
 
@@ -42,12 +54,16 @@ public class G1Player : MonoBehaviour
             speedMilestoneCount += speedIncreaseMilestone;
 
             speedIncreaseMilestone = speedIncreaseMilestone * speedMultiplier;
-            speed = speed * speedMultiplier;
+            moveSpeed = moveSpeed * speedMultiplier;
             Debug.Log("Level Up!");
         }
         
-        transform.Translate(speed * Time.deltaTime, 0, 0);
+        transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+
+       
     }
+
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         playerScale = this.transform.localScale.x;
@@ -84,9 +100,14 @@ public class G1Player : MonoBehaviour
         if (!clickedOn)
         {
             Debug.Log("GAME OVER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11");
+            theGameManager.RestartGame();
+            moveSpeed = moveSpeedStore;
+            speedMilestoneCount = speedMilestoneCountStore;
+           speedIncreaseMilestone = speedIncreaseMilestoneStore ;
+
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-}
+    }
 
     
 

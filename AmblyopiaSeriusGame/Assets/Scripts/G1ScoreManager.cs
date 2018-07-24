@@ -21,10 +21,21 @@ public class G1ScoreManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        scoreCount += pointsPerSecond * Time.deltaTime / 5;
+
+        if (scoreIncreasing)
+        {
+
+            scoreCount += pointsPerSecond * Time.deltaTime / 5;
+
+        }
+
+        if (scoreCount > highScoreCount)
+        {
+            highScoreCount = scoreCount;
+        }
 
         scoreText.text = "Score: " + (int)scoreCount;
-        highScoreText.text = "Highscore: " + highScoreCount;
+        highScoreText.text = "Highscore: " + (int)highScoreCount;
 
     }
 }
