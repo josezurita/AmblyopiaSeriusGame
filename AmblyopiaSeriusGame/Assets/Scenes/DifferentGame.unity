@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 1198592702}
   m_Layer: 0
   m_Name: SceneScript
-  m_TagString: Untagged
+  m_TagString: SceneScript
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,8 +276,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   figura: {fileID: 1286250042453704, guid: 7a4485a3040eac442911e1d8cbb293af, type: 2}
-  magnitud: 5
-  numberOfFigures: 10
+  initialMagnitude: 5
+  initialNumberOfFigures: 3
 --- !u!4 &1198592703
 Transform:
   m_ObjectHideFlags: 0
