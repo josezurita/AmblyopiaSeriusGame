@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FigureBehaviour : MonoBehaviour {
 
     private Vector3 randomVector;
     private new Rigidbody2D rigidbody2D;
     public float magnitud;
+    public bool diferente;
+    public Sprite[] sprites;
 
     // Use this for initialization
     void Start () {
@@ -20,11 +20,14 @@ public class FigureBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
+        if (diferente && Input.GetMouseButtonDown(0))
+        {
+            Debug.Log(Input.touchCount);
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void setSprite(int figura, int color)
     {
-        Debug.Log("x: " + rigidbody2D.velocity.x);
-        Debug.Log("y: " + rigidbody2D.velocity.y);
+        this.GetComponent<SpriteRenderer>().sprite = sprites[(figura*4)+color];
     }
 }
