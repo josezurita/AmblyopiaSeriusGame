@@ -9,6 +9,7 @@ TagManager:
   - PopUp
   - Figure
   - SceneScript
+  - Coin
   layers:
   - Default
   - TransparentFX

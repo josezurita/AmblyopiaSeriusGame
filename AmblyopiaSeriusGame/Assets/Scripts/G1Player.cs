@@ -57,10 +57,26 @@ public class G1Player : MonoBehaviour
             moveSpeed = moveSpeed * speedMultiplier;
             Debug.Log("Level Up!");
         }
-        
-        transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+        Debug.Log("Minimo: " + (circlePosition - circleRadius + playerRadius));
+        Debug.Log("Maximo: " + (circlePosition + circleRadius - playerRadius));
+        if (playerPosition < circlePosition - circleRadius + playerRadius || playerPosition > circlePosition + circleRadius - playerRadius)
+        {
 
-       
+            if (Input.GetMouseButton(0))
+            {
+                clickedOn = true;   
+                Debug.Log("clicked");
+            }
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            clickedOn = false;
+            Debug.Log("Moriste");
+        }
+
+
+
+        transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
     }
 
 
@@ -84,15 +100,7 @@ public class G1Player : MonoBehaviour
         circlePosition = col.transform.position.x;
         playerPosition = this.transform.position.x;
         
-       if (playerPosition < circlePosition - circleRadius + playerRadius || playerPosition > circlePosition + circleRadius - playerRadius)
-        {
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                clickedOn = true;
-                Debug.Log("clicked");
-            }
-        }
+      
             
     }
     private void OnTriggerExit2D(Collider2D collision)

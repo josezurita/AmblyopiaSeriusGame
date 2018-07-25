@@ -44,4 +44,10 @@ public class G1ScoreManager : MonoBehaviour {
         highScoreText.text = "Highscore: " + (int)highScoreCount;
 
     }
+
+    public void addScore(int pointsToAdd)
+    {
+        scoreCount += pointsToAdd;
+    }
+
 }
