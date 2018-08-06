@@ -71,7 +71,7 @@ public class G1Player : MonoBehaviour
         else if (Input.GetMouseButton(0))
         {
             clickedOn = false;
-            Debug.Log("Moriste");
+            die();
         }
 
 
@@ -107,17 +107,21 @@ public class G1Player : MonoBehaviour
     {
         if (!clickedOn)
         {
-            Debug.Log("GAME OVER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11");
-            theGameManager.RestartGame();
-            moveSpeed = moveSpeedStore;
-            speedMilestoneCount = speedMilestoneCountStore;
-           speedIncreaseMilestone = speedIncreaseMilestoneStore ;
-
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            die();
         }
     }
 
-    
+    public void die()
+    {
+        Debug.Log("GAME OVER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11");
+        theGameManager.RestartGame();
+        moveSpeed = moveSpeedStore;
+        speedMilestoneCount = speedMilestoneCountStore;
+        speedIncreaseMilestone = speedIncreaseMilestoneStore;
+
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 
 
 
