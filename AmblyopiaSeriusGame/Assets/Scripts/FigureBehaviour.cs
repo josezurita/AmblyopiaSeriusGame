@@ -3,7 +3,7 @@
 public class FigureBehaviour : MonoBehaviour {
 
     private Vector3 randomVector;
-    private new Rigidbody2D rigidbody2D;
+    private Rigidbody2D rigidbody2D;
     public float magnitud;
     public bool diferente;
     public Sprite[] sprites;

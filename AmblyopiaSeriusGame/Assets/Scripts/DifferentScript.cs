@@ -19,10 +19,22 @@ public class DifferentScript : MonoBehaviour {
     void Start() {
         GenerateFigures(initialMagnitude, initialNumberOfFigures, initialScale);
         newScale = initialScale;
+        Vector3 ScreenSize = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        GameObject EdgeUp = GameObject.Find("EdgeUp");
+        EdgeUp.transform.position = new Vector3(0, ScreenSize.y, 0);
+        GameObject EdgeDown = GameObject.Find("EdgeDown");
+        EdgeDown.transform.position = new Vector3(0, -ScreenSize.y, 0);
+        GameObject EdgeRight = GameObject.Find("EdgeRight");
+        EdgeRight.transform.position = new Vector3(ScreenSize.x, 0, 0);
+        GameObject EdgeLeft = GameObject.Find("EdgeLeft");
+        EdgeLeft.transform.position = new Vector3(-ScreenSize.x, 0, 0);
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            new MenuButtonBehaviour().LoadPreviousScene();
+        }
 
         Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
