@@ -30,4 +30,8 @@ public class FigureBehaviour : MonoBehaviour {
     {
         this.GetComponent<SpriteRenderer>().sprite = sprites[(figura*4)+color];
     }
+    public void setScale(float scale)
+    {
+        this.GetComponent<Transform>().localScale = new Vector3(scale,scale);
+    }
 }

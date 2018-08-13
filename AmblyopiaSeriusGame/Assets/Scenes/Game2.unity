@@ -278,6 +278,7 @@ MonoBehaviour:
   figura: {fileID: 1286250042453704, guid: 7a4485a3040eac442911e1d8cbb293af, type: 2}
   initialMagnitude: 5
   initialNumberOfFigures: 3
+  initialScale: 2
 --- !u!4 &1198592703
 Transform:
   m_ObjectHideFlags: 0

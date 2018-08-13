@@ -7,10 +7,18 @@ public class DifferentScript : MonoBehaviour {
     public GameObject figura;
     public float initialMagnitude;
     public int initialNumberOfFigures;
+    public float initialScale;
+    private float newMagnitude;
+    private int newNumberOfFigures;
+    private float newScale;
+    private float maxMagnitude = 12f;
+    private int maxNumberOfFigures = 15;
+    private float minScale = 1.5f;
 
     // Use this for initialization
     void Start() {
-        GenerateFigures(initialMagnitude, initialNumberOfFigures);
+        GenerateFigures(initialMagnitude, initialNumberOfFigures, initialScale);
+        newScale = initialScale;
     }
 	
 	// Update is called once per frame
@@ -24,7 +32,20 @@ public class DifferentScript : MonoBehaviour {
             {
                 if (hit.collider.GetComponent<FigureBehaviour>().diferente)
                 {
-                    GenerateFigures(initialMagnitude*1.05f, initialNumberOfFigures + 1);
+                    if (newMagnitude < maxMagnitude)
+                    {
+                        newMagnitude = initialMagnitude * 1.05f;
+                    }
+                    if (newNumberOfFigures < maxNumberOfFigures)
+                    {
+                        newNumberOfFigures = initialNumberOfFigures + 1;
+                    }
+                    if(newScale > minScale)
+                    {
+                        newScale = initialScale * 0.9f;
+                        Debug.Log(newScale);
+                    }
+                    GenerateFigures(newMagnitude, newNumberOfFigures, newScale);
                 }
 
             }
@@ -44,10 +65,11 @@ public class DifferentScript : MonoBehaviour {
         return newDir;
     }
 
-    public void GenerateFigures(float magnitude, int numberOfFigures)
+    public void GenerateFigures(float magnitude, int numberOfFigures, float scale)
     {
         initialMagnitude = magnitude;
         initialNumberOfFigures = numberOfFigures;
+        initialScale = scale;
         DestroyFigures();
         int spriteFigura = UnityEngine.Random.Range(0, 4);
         int spriteColor = UnityEngine.Random.Range(0, 4);
@@ -55,10 +77,11 @@ public class DifferentScript : MonoBehaviour {
         bool diferente = true;
         for (int i = 0; i < numberOfFigures; i++)
         {
-            Vector3 screenPosition = Camera.main.ScreenToWorldPoint(new Vector3(UnityEngine.Random.Range(0, Screen.width), UnityEngine.Random.Range(0, Screen.height), Camera.main.farClipPlane / 2));
+            Vector3 screenPosition = Camera.main.ScreenToWorldPoint(new Vector3(UnityEngine.Random.Range(Screen.width/10f, Screen.width - Screen.width / 10f), UnityEngine.Random.Range(Screen.height/10f, Screen.height - Screen.height / 10f), Camera.main.farClipPlane / 2));
             GameObject instance = Instantiate(figura, screenPosition, Quaternion.identity);
             instance.GetComponent<FigureBehaviour>().magnitud = magnitude;
             instance.GetComponent<FigureBehaviour>().setSprite(spriteFigura, spriteColor);
+            instance.GetComponent<FigureBehaviour>().setScale(scale);
             if (diferente)
             {
                 instance.GetComponent<FigureBehaviour>().diferente = diferente;
