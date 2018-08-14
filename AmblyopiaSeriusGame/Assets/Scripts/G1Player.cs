@@ -11,12 +11,13 @@ public class G1Player : MonoBehaviour
 
     public float speedIncreaseMilestone;
     private float speedIncreaseMilestoneStore;
-    
+
     private float speedMilestoneCount;
     private float speedMilestoneCountStore;
 
 
     public bool clickedOn = false;
+    public bool isInside = false;
 
     public ColliderDistance2D colldist;
     public GameObject circle1;
@@ -34,12 +35,10 @@ public class G1Player : MonoBehaviour
 
     public G1GameManager theGameManager;
 
-
-
     private void Start()
     {
         circle1coll = circle1.GetComponent<CircleCollider2D>();
-        
+
         speedMilestoneCount = speedIncreaseMilestone;
         moveSpeedStore = moveSpeed;
         speedMilestoneCountStore = speedMilestoneCount;
@@ -49,7 +48,7 @@ public class G1Player : MonoBehaviour
     void Update()
 
     {
-        if(transform.position.x > speedMilestoneCount)
+        if (transform.position.x > speedMilestoneCount)
         {
             speedMilestoneCount += speedIncreaseMilestone;
 
@@ -57,24 +56,19 @@ public class G1Player : MonoBehaviour
             moveSpeed = moveSpeed * speedMultiplier;
             Debug.Log("Level Up!");
         }
-        Debug.Log("Minimo: " + (circlePosition - circleRadius + playerRadius));
-        Debug.Log("Maximo: " + (circlePosition + circleRadius - playerRadius));
-        if (playerPosition < circlePosition - circleRadius + playerRadius || playerPosition > circlePosition + circleRadius - playerRadius)
+        if (Input.GetMouseButton(0))
         {
-
-            if (Input.GetMouseButton(0))
+            if (!isInside)
             {
-                clickedOn = true;   
-                Debug.Log("clicked");
+                die();
+            }
+
+            if (isInside)
+            {
+                Debug.Log("IsInside");
+                GameObject.FindWithTag("Circle").SetActive(false);
             }
         }
-        else if (Input.GetMouseButton(0))
-        {
-            clickedOn = false;
-            die();
-        }
-
-
 
         transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
     }
@@ -82,33 +76,32 @@ public class G1Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        playerScale = this.transform.localScale.x;
-        circlePosition = col.transform.position.x;
-        circleScale = col.transform.localScale.x;
-        playerPosition = this.transform.position.x;
         clickedOn = false;
-        sumaScales = playerScale + circleScale;
-        distance = circlePosition - playerPosition;
-        unidad = distance / sumaScales;
-        circleRadius =  unidad * circleScale / 2;
-        playerRadius = unidad * playerScale / 2;
-        
+        isInside = false;
     }
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        circlePosition = col.transform.position.x;
-        playerPosition = this.transform.position.x;
-        
-      
-            
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (!clickedOn)
+        if (Input.GetMouseButton(0))
         {
+            clickedOn = false;
+            Debug.Log("clicked");
             die();
         }
+
+    }
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.offset.x < 0)
+        {
+            isInside = true;
+        }
+        else
+        {
+            isInside = false;
+        }
+
+
     }
 
     public void die()
