@@ -619,8 +619,8 @@ MonoBehaviour:
   theCircleCollider: {fileID: 1283640772}
   generationPoint: {fileID: 1668089016}
   distanceBetween: 0
-  distanceBetweenMin: 12
-  distanceBetweenMax: 18
+  distanceBetweenMin: 5
+  distanceBetweenMax: 10
   theObjectPool: {fileID: 1411631836}
 --- !u!4 &1086239005
 Transform:

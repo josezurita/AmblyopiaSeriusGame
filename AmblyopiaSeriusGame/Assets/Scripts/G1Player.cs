@@ -56,8 +56,9 @@ public class G1Player : MonoBehaviour
             moveSpeed = moveSpeed * speedMultiplier;
             Debug.Log("Level Up!");
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Clic");
             if (!isInside)
             {
                 die();
@@ -78,6 +79,10 @@ public class G1Player : MonoBehaviour
     {
         clickedOn = false;
         isInside = false;
+        if (col.offset.x > 0)
+        {
+            die();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D col)
