@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,24 +32,68 @@ public class MenuButtonBehaviour : MonoBehaviour {
 
     public void LoadScene(string sceneName)
     {
-        PlayerPrefs.SetString("lastLoadedScene", SceneManager.GetActiveScene().name);
+        String[] navigationArray = null;
+        Stack<String> navigation = new Stack<string>();
+        try
+        {
+            navigationArray = PlayerPrefsX.GetStringArray("navigation");
+            Array.Reverse(navigationArray);
+            navigation = new Stack<string>(navigationArray);
+
+        }
+        catch(Exception e)
+        {
+            Debug.Log(e.StackTrace);
+        }
+        navigation.Push(SceneManager.GetActiveScene().name);
+        navigationArray = navigation.ToArray();
+        Debug.Log("navigation.lenght: " + navigationArray.Length);
+        printArray(navigationArray);
+        PlayerPrefsX.SetStringArray("navigation", navigationArray);
         SceneManager.LoadScene(sceneName);
+    }
+
+    private void printArray(string[] navigationArray)
+    {
+        int index = 0;
+        foreach(String item in navigationArray)
+        {
+            Debug.Log(index + ".-" + item);
+            index++;
+        }
     }
 
     public void ExitButtonPressed()
     {
         Debug.Log("Salir de la aplicación");
+        String[] navigationArray = { };
+        PlayerPrefsX.SetStringArray("navigation", navigationArray);
         Application.Quit();
     }
 
     public void LoadPreviousScene()
     {
-        string previousScene = PlayerPrefs.GetString("lastLoadedScene");
-        if (previousScene != null)
+        String[] navigationArray = null;
+        Stack<String> navigation = new Stack<string>();
+        try
         {
-            SceneManager.LoadScene(previousScene);
+            navigationArray = PlayerPrefsX.GetStringArray("navigation");
+            Array.Reverse(navigationArray);
+            navigation = new Stack<string>(navigationArray);
+
         }
-        else
+        catch (Exception e)
+        {
+            Debug.Log(e.StackTrace);
+        }
+        try
+        {
+            SceneManager.LoadScene(navigation.Pop());
+            navigationArray = navigation.ToArray();
+            Debug.Log("navigation.lenght: " + navigationArray.Length);
+            PlayerPrefsX.SetStringArray("navigation", navigationArray);
+        }
+        catch
         {
             Debug.Log("No hay escena previa");
         }
