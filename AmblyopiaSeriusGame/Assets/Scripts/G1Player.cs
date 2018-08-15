@@ -12,9 +12,10 @@ public class G1Player : MonoBehaviour
     public float speedIncreaseMilestone;
     private float speedIncreaseMilestoneStore;
 
-    private float speedMilestoneCount;
-    private float speedMilestoneCountStore;
+    public float speedMilestoneCount;
+    public float speedMilestoneCountStore;
 
+    private int level;
 
     public bool clickedOn = false;
     public bool isInside = false;
@@ -26,6 +27,7 @@ public class G1Player : MonoBehaviour
 
     private void Start()
     {
+        level = 1;
         theGameManager = FindObjectOfType<G1GameManager>();
         speedMilestoneCount = speedIncreaseMilestone;
         moveSpeedStore = moveSpeed;
@@ -38,11 +40,7 @@ public class G1Player : MonoBehaviour
     {
         if (transform.position.x > speedMilestoneCount)
         {
-            speedMilestoneCount += speedIncreaseMilestone;
-
-            speedIncreaseMilestone = speedIncreaseMilestone * speedMultiplier;
-            moveSpeed = moveSpeed * speedMultiplier;
-            Debug.Log("Level Up!");
+            levelUp();
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -68,6 +66,12 @@ public class G1Player : MonoBehaviour
         }
 
         transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            new MenuButtonBehaviour().LoadPreviousScene();
+        }
     }
 
 
@@ -108,6 +112,17 @@ public class G1Player : MonoBehaviour
         speedIncreaseMilestone = speedIncreaseMilestoneStore;
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void levelUp()
+    {
+
+        level++;
+        speedMilestoneCount += speedIncreaseMilestone;
+
+        speedIncreaseMilestone = speedIncreaseMilestone * speedMultiplier;
+        moveSpeed = moveSpeed * speedMultiplier;
+        Debug.Log("Level Up!");
     }
 
 

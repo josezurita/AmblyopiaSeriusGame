@@ -47,6 +47,6 @@ public class G1CircleGenerator : MonoBehaviour {
             newCircle.SetActive(true);
 
         }
-		
-	}
+
+    }
 }
