@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class G1PickUpPoints : MonoBehaviour {
-    public int scoreToGivePerCoin;
     private G1ScoreManager theScoreManager;
     private G1GameManager theGameManager;
 
@@ -20,4 +19,7 @@ public class G1PickUpPoints : MonoBehaviour {
 
        
     }
+
+
+
 }

@@ -20,25 +20,13 @@ public class G1Player : MonoBehaviour
     public bool isInside = false;
 
     public ColliderDistance2D colldist;
-    public GameObject circle1;
-    public CircleCollider2D circle1coll;
 
-    public float playerPosition;
-    public float circlePosition;
-    public float playerScale;
-    public float circleScale;
-    public float sumaScales;
-    public float distance;
-    public float unidad;
-    public float playerRadius;
-    public float circleRadius;
-
+    
     public G1GameManager theGameManager;
 
     private void Start()
     {
-        circle1coll = circle1.GetComponent<CircleCollider2D>();
-
+        theGameManager = FindObjectOfType<G1GameManager>();
         speedMilestoneCount = speedIncreaseMilestone;
         moveSpeedStore = moveSpeed;
         speedMilestoneCountStore = speedMilestoneCount;
@@ -58,17 +46,25 @@ public class G1Player : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Clic");
-            if (!isInside)
+            if (!theGameManager.coinIsPicked)
             {
-                die();
-            }
+                Debug.Log("Clic");
+                if (!isInside)
+                {
+                    die();
+                }
 
-            if (isInside)
-            {
-                Debug.Log("IsInside");
-                GameObject.FindWithTag("Circle").SetActive(false);
+                if (isInside)
+                {
+                    Debug.Log("IsInside");
+                    GameObject.FindWithTag("Circle").SetActive(false);
+                }
             }
+            else
+            {
+                theGameManager.coinIsPicked = false;
+            }
+           
         }
 
         transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
@@ -87,12 +83,6 @@ public class G1Player : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D col)
     {
-        if (Input.GetMouseButton(0))
-        {
-            clickedOn = false;
-            Debug.Log("clicked");
-            die();
-        }
 
     }
     private void OnTriggerExit2D(Collider2D col)

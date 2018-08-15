@@ -15,6 +15,7 @@ public class G1GameManager : MonoBehaviour {
 
 
     private G1ScoreManager theScoreManager;
+    public int scoreToGivePerCoin;
     public bool coinIsPicked=false;
 
     // Use this for initialization
@@ -27,17 +28,21 @@ public class G1GameManager : MonoBehaviour {
 	}
 	
 	void Update () {
+
         Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
         if (Input.GetMouseButtonDown(0))
         {
             if (hit != null && hit.collider != null)
             {
+
+                Debug.Log("Coin");
                 if (hit.collider.tag==("Coin"))
                 {
                     hit.collider.gameObject.SetActive(false);
 
                     coinIsPicked = true;
+                    theScoreManager.addScore(scoreToGivePerCoin);
 
                 }
             }
@@ -62,7 +67,6 @@ public class G1GameManager : MonoBehaviour {
             circleList[i].gameObject.SetActive(false);
         }
 
-        if (circleDestroyer == null)
             circleDestroyer = GameObject.FindGameObjectsWithTag("Circle");
 
         foreach (GameObject cir in circleDestroyer)
