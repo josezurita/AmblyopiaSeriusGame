@@ -22,13 +22,15 @@ public class G1Player : MonoBehaviour
 
     public ColliderDistance2D colldist;
 
-    
+
     public G1GameManager theGameManager;
+    public G1CircleGenerator theCircleGenerator;
 
     private void Start()
     {
         level = 1;
         theGameManager = FindObjectOfType<G1GameManager>();
+        theCircleGenerator = FindObjectOfType<G1CircleGenerator>();
         speedMilestoneCount = speedIncreaseMilestone;
         moveSpeedStore = moveSpeed;
         speedMilestoneCountStore = speedMilestoneCount;
@@ -50,6 +52,8 @@ public class G1Player : MonoBehaviour
                 if (!isInside)
                 {
                     die();
+                    Debug.Log("Murio por clic afuera");
+
                 }
 
                 if (isInside)
@@ -81,23 +85,26 @@ public class G1Player : MonoBehaviour
         isInside = false;
         if (col.offset.x > 0)
         {
+            Debug.Log("Murio no hacer clic");
+
             die();
         }
     }
 
-    private void OnTriggerStay2D(Collider2D col)
-    {
-
-    }
+    
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.offset.x < 0)
         {
+            Debug.Log("Entro al circulo");
+
             isInside = true;
         }
-        else
+        else if (col.offset.x > 0)
         {
             isInside = false;
+            Debug.Log("Salio del circulo");
+
         }
 
 
@@ -122,7 +129,9 @@ public class G1Player : MonoBehaviour
 
         speedIncreaseMilestone = speedIncreaseMilestone * speedMultiplier;
         moveSpeed = moveSpeed * speedMultiplier;
+        theCircleGenerator.percentOfCoins = theCircleGenerator.percentOfCoins * 95 / 100;
         Debug.Log("Level Up!");
+
     }
 
 
