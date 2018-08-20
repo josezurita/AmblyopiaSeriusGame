@@ -130,6 +130,8 @@ public class G1Player : MonoBehaviour
         speedIncreaseMilestone = speedIncreaseMilestone * speedMultiplier;
         moveSpeed = moveSpeed * speedMultiplier;
         theCircleGenerator.percentOfCoins = theCircleGenerator.percentOfCoins * 95 / 100;
+        theCircleGenerator.circleIndexMax = theCircleGenerator.circleIndexMax * 95 / 100;
+        theCircleGenerator.circleIndexMin = theCircleGenerator.circleIndexMin * 95 / 100;
         Debug.Log("Level Up!");
 
     }
