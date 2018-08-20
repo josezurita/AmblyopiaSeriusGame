@@ -20,7 +20,7 @@ public class G1CircleGenerator : MonoBehaviour {
     public float circleIndexMax;
     public float circleIndexMin;
     private float circleIndexBound;
-    public float percentOfCoins;
+    public int percentOfCoins;
 
     public G1ObjectPooler theObjectPool;
     public G1CoinGenerator theCoinGenerator;
@@ -33,7 +33,7 @@ public class G1CircleGenerator : MonoBehaviour {
         circleIndexMax = 4;
         circleIndexMin = 3;
         circleIndexBound = 1+ 1f;
-        percentOfCoins = 1 ;
+        percentOfCoins = 100;
 	}
 	
 	// Update is called once per frame      
@@ -59,10 +59,13 @@ public class G1CircleGenerator : MonoBehaviour {
             newCircle.transform.rotation = transform.rotation;
             newCircle.transform.localScale = new Vector3(circleScale, circleScale, 0);
             newCircle.SetActive(true);
+            
 
-            if (Random.Range(percentOfCoins, 100) == percentOfCoins)
+            Debug.Log(Random.Range(percentOfCoins, 100));
+
+            if (Random.Range(percentOfCoins, 100) / 10 == percentOfCoins/10)
             {
-                theCoinGenerator.SpawnCoins(new Vector3(transform.position.x + 2f, transform.position.y + 4f, transform.position.z));
+                theCoinGenerator.SpawnCoins(new Vector3(transform.position.x + 4f, transform.position.y + 4f, transform.position.z));
             }
 
         }
