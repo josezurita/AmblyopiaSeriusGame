@@ -143,7 +143,7 @@ MonoBehaviour:
   circleGenerator: {fileID: 1086239005}
   thePlayer: {fileID: 312933890}
   circleDestroyer: []
-  scoreToGivePerCoin: 21312
+  scoreToGivePerCoin: 5
   coinIsPicked: 0
 --- !u!4 &45218750
 Transform:
@@ -236,8 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a73ec021351c5df4daeac013d08bf80c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPool: {fileID: 0}
-  distanceBetweenCoins: 0
+  coinPool: {fileID: 1813967307}
+  distanceBetweenCoins: 1
 --- !u!4 &260460703
 Transform:
   m_ObjectHideFlags: 0
@@ -320,9 +320,12 @@ MonoBehaviour:
   moveSpeed: 5
   speedMultiplier: 1.1
   speedIncreaseMilestone: 50
+  speedMilestoneCount: 0
+  speedMilestoneCountStore: 0
   clickedOn: 0
   isInside: 0
   theGameManager: {fileID: 45218749}
+  theCircleGenerator: {fileID: 0}
 --- !u!212 &312933891
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -437,16 +440,16 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 48
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 63
     m_Alignment: 2
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'HighScore: 0'
 --- !u!222 &319354993
@@ -528,7 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -613,9 +616,11 @@ MonoBehaviour:
   distanceBetween: 0
   distanceBetweenMin: 8
   distanceBetweenMax: 15
-  scaleIndexMin: 1.5
-  scaleIndexMax: 5
+  circleIndexMax: 3
+  circleIndexMin: 0
+  percentOfCoins: 0
   theObjectPool: {fileID: 1411631836}
+  theCoinGenerator: {fileID: 260460702}
 --- !u!4 &1086239005
 Transform:
   m_ObjectHideFlags: 0
@@ -852,7 +857,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1668089015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3, y: 0, z: 0}
+  m_LocalPosition: {x: 4.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1528475718}
@@ -957,16 +962,16 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 48
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 2
+    m_MaxSize: 59
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Score: 0'
 --- !u!222 &2008828147
