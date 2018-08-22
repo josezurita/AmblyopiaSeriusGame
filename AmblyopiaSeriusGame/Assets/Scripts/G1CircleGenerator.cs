@@ -38,36 +38,37 @@ public class G1CircleGenerator : MonoBehaviour {
 	
 	// Update is called once per frame      
 	void Update () {
-      
-        if (transform.position.x < generationPoint.position.x)
+        if (!PauseBehaviourScript.GameIsPaused)
         {
-            distanceBetween = Random.Range(distanceBetweenMin, distanceBetweenMax);
-            transform.position = new Vector3(transform.position.x + circleRadius + distanceBetween, transform.position.y, transform.position.z);
-            
-            //Instantiate(theCircle, transs form.position, transform.rotation);
-            GameObject newCircle = theObjectPool.GetPooledObject();
-            if (circleIndexMin < circleIndexBound)
+            if (transform.position.x < generationPoint.position.x)
             {
-                circleIndexMin = circleIndexBound;
+                distanceBetween = Random.Range(distanceBetweenMin, distanceBetweenMax);
+                transform.position = new Vector3(transform.position.x + circleRadius + distanceBetween, transform.position.y, transform.position.z);
+
+                //Instantiate(theCircle, transs form.position, transform.rotation);
+                GameObject newCircle = theObjectPool.GetPooledObject();
+                if (circleIndexMin < circleIndexBound)
+                {
+                    circleIndexMin = circleIndexBound;
+                }
+
+                circleScaleMin = thePlayer.transform.localScale.x * circleIndexMin;
+                circleScaleMax = thePlayer.transform.localScale.x * circleIndexMax;
+                circleScale = Random.Range(circleScaleMin, circleScaleMax);
+
+                newCircle.transform.position = transform.position;
+                newCircle.transform.rotation = transform.rotation;
+                newCircle.transform.localScale = new Vector3(circleScale, circleScale, 0);
+                newCircle.SetActive(true);
+
+
+                Debug.Log(Random.Range(percentOfCoins, 100));
+
+                if (Random.Range(percentOfCoins, 100) / 10 == percentOfCoins / 10)
+                {
+                    theCoinGenerator.SpawnCoins(new Vector3(transform.position.x + 4f, transform.position.y + 4f, transform.position.z));
+                }
             }
-
-            circleScaleMin = thePlayer.transform.localScale.x * circleIndexMin;
-            circleScaleMax = thePlayer.transform.localScale.x * circleIndexMax;
-            circleScale = Random.Range(circleScaleMin, circleScaleMax);
-
-            newCircle.transform.position = transform.position;
-            newCircle.transform.rotation = transform.rotation;
-            newCircle.transform.localScale = new Vector3(circleScale, circleScale, 0);
-            newCircle.SetActive(true);
-            
-
-            Debug.Log(Random.Range(percentOfCoins, 100));
-
-            if (Random.Range(percentOfCoins, 100) / 10 == percentOfCoins/10)
-            {
-                theCoinGenerator.SpawnCoins(new Vector3(transform.position.x + 4f, transform.position.y + 4f, transform.position.z));
-            }
-
         }
 
     }

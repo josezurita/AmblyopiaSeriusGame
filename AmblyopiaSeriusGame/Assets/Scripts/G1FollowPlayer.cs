@@ -6,10 +6,12 @@ public class G1FollowPlayer : MonoBehaviour {
 
     private void Update()
     {
-
-        if (player.position.x > transform.position.x || player.position.x < transform.position.x)
+        if (!PauseBehaviourScript.GameIsPaused)
         {
-            transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
+            if (player.position.x > transform.position.x || player.position.x < transform.position.x)
+            {
+                transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
+            }
         }
     }
 

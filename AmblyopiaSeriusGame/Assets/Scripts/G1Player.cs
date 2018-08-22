@@ -40,43 +40,43 @@ public class G1Player : MonoBehaviour
     void Update()
 
     {
-        if (transform.position.x > speedMilestoneCount)
-        {
-            levelUp();
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (!theGameManager.coinIsPicked)
-            {
-                Debug.Log("Clic");
-                if (!isInside)
-                {
-                    die();
-                    Debug.Log("Murio por clic afuera");
 
+        if (!PauseBehaviourScript.GameIsPaused)
+        {
+            if (transform.position.x > speedMilestoneCount)
+            {
+                levelUp();
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (!theGameManager.coinIsPicked)
+                {
+                    Debug.Log("Clic");
+                    if (!isInside)
+                    {
+                        die();
+                        Debug.Log("Murio por clic afuera");
+
+                    }
+
+                    if (isInside)
+                    {
+                        Debug.Log("IsInside");
+                        GameObject.FindWithTag("Circle").SetActive(false);
+                        isInside = false;
+                    }
+                }
+                else
+                {
+                    theGameManager.coinIsPicked = false;
                 }
 
-                if (isInside)
-                {
-                    Debug.Log("IsInside");
-                    GameObject.FindWithTag("Circle").SetActive(false);
-                    isInside = false;
-                }
             }
-            else
-            {
-                theGameManager.coinIsPicked = false;
-            }
-           
+
+            transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+
         }
 
-        transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
-
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            new MenuButtonBehaviour().LoadPreviousScene();
-        }
     }
 
 
@@ -92,7 +92,7 @@ public class G1Player : MonoBehaviour
         }
     }
 
-    
+
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.offset.x < 0)

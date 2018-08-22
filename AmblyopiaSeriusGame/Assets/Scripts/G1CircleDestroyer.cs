@@ -13,13 +13,16 @@ public class G1CircleDestroyer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(transform.position.x < circleDestructionPoint.transform.position.x)
+        if (!PauseBehaviourScript.GameIsPaused)
         {
-            //Destroy(gameObject);
+            if (transform.position.x < circleDestructionPoint.transform.position.x)
+            {
+                //Destroy(gameObject);
 
-            gameObject.SetActive(false);
-            
-        } 
+                gameObject.SetActive(false);
+
+            }
+        }
 		
 	}
 }

@@ -29,26 +29,28 @@ public class G1GameManager : MonoBehaviour {
 	}
 	
 	void Update () {
-
-        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
-        if (Input.GetMouseButtonDown(0))
+        if (!PauseBehaviourScript.GameIsPaused)
         {
-            if (hit != null && hit.collider != null)
+
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
+            if (Input.GetMouseButtonDown(0))
             {
-
-                Debug.Log("Coin");
-                if (hit.collider.tag==("Coin"))
+                if (hit != null && hit.collider != null)
                 {
-                    hit.collider.gameObject.SetActive(false);
 
-                    coinIsPicked = true;
-                    theScoreManager.addScore(scoreToGivePerCoin);
+                    Debug.Log("Coin");
+                    if (hit.collider.tag == ("Coin"))
+                    {
+                        hit.collider.gameObject.SetActive(false);
 
+                        coinIsPicked = true;
+                        theScoreManager.addScore(scoreToGivePerCoin);
+
+                    }
                 }
             }
         }
-
     }
 
     public void RestartGame()
