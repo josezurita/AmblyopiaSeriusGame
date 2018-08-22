@@ -32,36 +32,35 @@ public class DifferentScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            new MenuButtonBehaviour().LoadPreviousScene();
-        }
-
-        Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
-        if (Input.GetMouseButtonDown(0))
+        if (!PauseBehaviourScript.GameIsPaused)
         {
-            if (hit != null && hit.collider != null)
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(pos, Vector2.zero);
+            if (Input.GetMouseButtonDown(0))
             {
-                if (hit.collider.GetComponent<FigureBehaviour>().diferente)
+                if (hit != null && hit.collider != null)
                 {
-                    if (newMagnitude < maxMagnitude)
+                    if (hit.collider.GetComponent<FigureBehaviour>().diferente)
                     {
-                        newMagnitude = initialMagnitude * 1.05f;
+                        if (newMagnitude < maxMagnitude)
+                        {
+                            newMagnitude = initialMagnitude * 1.05f;
+                        }
+                        if (newNumberOfFigures < maxNumberOfFigures)
+                        {
+                            newNumberOfFigures = initialNumberOfFigures + 1;
+                        }
+                        if (newScale > minScale)
+                        {
+                            newScale = initialScale * 0.9f;
+                            Debug.Log(newScale);
+                        }
+                        GenerateFigures(newMagnitude, newNumberOfFigures, newScale);
                     }
-                    if (newNumberOfFigures < maxNumberOfFigures)
-                    {
-                        newNumberOfFigures = initialNumberOfFigures + 1;
-                    }
-                    if(newScale > minScale)
-                    {
-                        newScale = initialScale * 0.9f;
-                        Debug.Log(newScale);
-                    }
-                    GenerateFigures(newMagnitude, newNumberOfFigures, newScale);
-                }
 
+                }
             }
-        }        
+        }
     }
 
     private int RandomExclude(int excluded)
