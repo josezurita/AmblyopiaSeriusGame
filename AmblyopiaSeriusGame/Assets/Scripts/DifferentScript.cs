@@ -5,6 +5,7 @@ using UnityEngine;
 public class DifferentScript : MonoBehaviour {
 
     public GameObject figura;
+    public GameObject cameraShaker;
     public float initialMagnitude;
     public int initialNumberOfFigures;
     public float initialScale;
@@ -56,6 +57,10 @@ public class DifferentScript : MonoBehaviour {
                             Debug.Log(newScale);
                         }
                         GenerateFigures(newMagnitude, newNumberOfFigures, newScale);
+                    }
+                    else
+                    {
+                        cameraShaker.GetComponent<CameraShake>().Shake(0.1f, 0.2f);
                     }
 
                 }
