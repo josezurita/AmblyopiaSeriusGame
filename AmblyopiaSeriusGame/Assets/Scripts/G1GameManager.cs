@@ -12,6 +12,7 @@ public class G1GameManager : MonoBehaviour {
 
     private G1CircleDestroyer[] circleList;
     public GameObject[] circleDestroyer;
+    public GameObject[] coinDestroyer;
 
 
     private G1ScoreManager theScoreManager;
@@ -67,12 +68,20 @@ public class G1GameManager : MonoBehaviour {
             circleList[i].gameObject.SetActive(false);
         }
 
-            circleDestroyer = GameObject.FindGameObjectsWithTag("Circle");
+        circleDestroyer = GameObject.FindGameObjectsWithTag("Circle");
 
         foreach (GameObject cir in circleDestroyer)
         {
             cir.SetActive(false);
         }
+        coinDestroyer = GameObject.FindGameObjectsWithTag("Coin");
+
+        foreach (GameObject coin in coinDestroyer)
+        {
+            coin.SetActive(false);
+        }
+
+
         thePlayer.transform.position = playerStartPoint;
         circleGenerator.position = circleStartPoint;
         thePlayer.gameObject.SetActive(true);

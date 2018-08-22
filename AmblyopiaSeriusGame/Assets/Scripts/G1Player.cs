@@ -60,6 +60,7 @@ public class G1Player : MonoBehaviour
                 {
                     Debug.Log("IsInside");
                     GameObject.FindWithTag("Circle").SetActive(false);
+                    isInside = false;
                 }
             }
             else
