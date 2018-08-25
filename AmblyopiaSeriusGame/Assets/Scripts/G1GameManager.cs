@@ -12,8 +12,9 @@ public class G1GameManager : MonoBehaviour {
 
     private G1CircleDestroyer[] circleList;
     public GameObject[] circleDestroyer;
-    public GameObject[] coinDestroyer;
 
+    public GameObject[] coinDestroyer;
+    public DeathBehaviour theDeathScreen;
 
     private G1ScoreManager theScoreManager;
     public int scoreToGivePerCoin;
@@ -55,9 +56,46 @@ public class G1GameManager : MonoBehaviour {
 
     public void RestartGame()
     {
-        StartCoroutine("RestartGameCo");
+        theScoreManager.scoreIncreasing = false;
+        thePlayer.gameObject.SetActive(false);
+
+        theDeathScreen.gameObject.SetActive(true);
+        //StartCoroutine("RestartGameCo");
     }
 
+    public void Reset()
+    {
+        theDeathScreen.gameObject.SetActive(false);
+
+        circleList = FindObjectsOfType<G1CircleDestroyer>();
+
+        for (int i = 0; i < circleList.Length; i++)
+        {
+            circleList[i].gameObject.SetActive(false);
+        }
+
+        circleDestroyer = GameObject.FindGameObjectsWithTag("Circle");
+
+        foreach (GameObject cir in circleDestroyer)
+        {
+            cir.SetActive(false);
+        }
+        coinDestroyer = GameObject.FindGameObjectsWithTag("Coin");
+
+        foreach (GameObject coin in coinDestroyer)
+        {
+            coin.SetActive(false);
+        }
+
+
+        thePlayer.transform.position = playerStartPoint;
+        circleGenerator.position = circleStartPoint;
+        thePlayer.gameObject.SetActive(true);
+
+        theScoreManager.scoreCount = 0;
+        theScoreManager.scoreIncreasing = true;
+    }
+    /*
     public IEnumerator RestartGameCo()
     {
         theScoreManager.scoreIncreasing = false;   
@@ -91,5 +129,5 @@ public class G1GameManager : MonoBehaviour {
         theScoreManager.scoreCount = 0;
         theScoreManager.scoreIncreasing = true;
 
-    }
+    }*/
 }
