@@ -12,6 +12,6 @@ public class DeathBehaviour : MonoBehaviour {
 
     public void ExitButtonClick()
     {
-        Application.LoadLevel(mainMenuLevel);
+        new MenuButtonBehaviour().LoadPreviousScene();
     }
 }

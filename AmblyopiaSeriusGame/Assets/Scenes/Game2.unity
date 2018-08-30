@@ -423,7 +423,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 20, y: -20}
-  m_SizeDelta: {x: 120, y: 30}
+  m_SizeDelta: {x: 250, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &450585343
 MonoBehaviour:
@@ -619,7 +619,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -20, y: -20}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 250, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &475023900
 MonoBehaviour:
@@ -966,6 +966,10 @@ MonoBehaviour:
   currentTime: 0
   maxTime: 10
   timeBar: {fileID: 713537118}
+  scoreLabel: {fileID: 450585343}
+  highScoreLabel: {fileID: 475023900}
+  score: 0
+  highScore: 0
 --- !u!4 &703624177
 Transform:
   m_ObjectHideFlags: 0

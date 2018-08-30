@@ -17,6 +17,7 @@ public class CameraShake : MonoBehaviour {
 
     public void Shake(float amount, float length)
     {
+        Handheld.Vibrate();
         shakeAmount = amount;
         InvokeRepeating("DoShake", 0, 0.01f);
         Invoke("StopShake", length);

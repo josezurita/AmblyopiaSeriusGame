@@ -9,16 +9,30 @@ public class DGScoreScript : MonoBehaviour {
     public float currentTime;
     public float maxTime;
     public Slider timeBar;
+    public Text scoreLabel;
+    public Text highScoreLabel;
+    public float score;
+    public float highScore;
 
 	// Use this for initialization
 	void Start () {
+        currentTime = 0;
+        score = 0;
+        highScore = 0f;
+        if (PlayerPrefs.HasKey("G2HighScore"))
+        {
+            highScore = PlayerPrefs.GetFloat("G2HighScore");
+        }
 	}
 
     public void RestartTimer(float newTime)
     {
+        score += currentTime * 10;
+        scoreLabel.text = "Score: " + Mathf.RoundToInt(score);
         maxTime = newTime;
         currentTime = newTime;
         timeBar.value = CalculateTimePercentage();
+        SaveHighScore();
     }
 
     // Update is called once per frame
@@ -31,7 +45,18 @@ public class DGScoreScript : MonoBehaviour {
 
     private void Die()
     {
-        Debug.Log("Tiempo Agotado");
+        SaveHighScore();        
+    }
+
+    private void SaveHighScore()
+    {
+        if (score > highScore)
+        {
+            Debug.Log("Nuevo puntaje máximo");
+            highScore = score;
+            PlayerPrefs.SetFloat("G2HighScore", highScore);
+        }
+        highScoreLabel.text = "High Score: " + Mathf.RoundToInt(highScore);
     }
 
     private float CalculateTimePercentage()
