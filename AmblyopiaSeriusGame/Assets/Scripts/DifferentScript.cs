@@ -6,20 +6,25 @@ public class DifferentScript : MonoBehaviour {
 
     public GameObject figura;
     public GameObject cameraShaker;
+    public GameObject timer;
     public float initialMagnitude;
     public int initialNumberOfFigures;
     public float initialScale;
+    public float initialTime;
     private float newMagnitude;
     private int newNumberOfFigures;
     private float newScale;
+    private float newTime;
     private float maxMagnitude = 12f;
     private int maxNumberOfFigures = 15;
     private float minScale = 1.5f;
+    private float minTime = 2f;
 
     // Use this for initialization
     void Start() {
-        GenerateFigures(initialMagnitude, initialNumberOfFigures, initialScale);
+        GenerateFigures(initialMagnitude, initialNumberOfFigures, initialScale, initialTime);
         newScale = initialScale;
+        newTime = initialTime;
         Vector3 ScreenSize = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         GameObject EdgeUp = GameObject.Find("EdgeUp");
         EdgeUp.transform.position = new Vector3(0, ScreenSize.y, 0);
@@ -54,9 +59,13 @@ public class DifferentScript : MonoBehaviour {
                         if (newScale > minScale)
                         {
                             newScale = initialScale * 0.9f;
-                            Debug.Log(newScale);
                         }
-                        GenerateFigures(newMagnitude, newNumberOfFigures, newScale);
+                        if(newTime > minTime)
+                        {
+                            newTime = initialTime * 0.9f;
+                            Debug.Log(newTime);
+                        }
+                        GenerateFigures(newMagnitude, newNumberOfFigures, newScale, newTime);
                     }
                     else
                     {
@@ -81,14 +90,16 @@ public class DifferentScript : MonoBehaviour {
         return newDir;
     }
 
-    public void GenerateFigures(float magnitude, int numberOfFigures, float scale)
+    public void GenerateFigures(float magnitude, int numberOfFigures, float scale, float time)
     {
         initialMagnitude = magnitude;
         initialNumberOfFigures = numberOfFigures;
         initialScale = scale;
+        initialTime = time;
         DestroyFigures();
         int spriteFigura = UnityEngine.Random.Range(0, 4);
         int spriteColor = UnityEngine.Random.Range(0, 4);
+        timer.GetComponent<DGScoreScript>().RestartTimer(initialTime);
 
         bool diferente = true;
         for (int i = 0; i < numberOfFigures; i++)
