@@ -7,22 +7,53 @@ using UnityEngine.SceneManagement;
 public class MenuButtonBehaviour : MonoBehaviour {
 
     public GUISkin guiSkin;
+    public GameObject confirmationPanel;
+    private GameObject[] menuButtons;
+    private string currentScene;
 
-	// Use this for initialization
-	void Start () {
-        string currentScene = SceneManager.GetActiveScene().name;
-        switch (currentScene)
+    private void Awake()
+    {
+        menuButtons = GameObject.FindGameObjectsWithTag("MenuButton");
+        currentScene = SceneManager.GetActiveScene().name;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            case "MainMenu":
-                HidePopUp("InfoPanel");
-                HidePopUp("HelpPanel");
-                break;
-            case "":
-                Debug.Log("Aquí los popUps de la escena correspondiente");
-                break;
-            default:
-                break;
+            if (currentScene.Equals("MainMenu")){
+                if (confirmationPanel.activeSelf)
+                {
+                    confirmationPanel.SetActive(false);
+                    toogleInteractableMainMenuButtons();
+                }
+                else
+                {
+                    confirmationPanel.SetActive(true);
+                    toogleInteractableMainMenuButtons();
+                }
+            }
+            else
+            {
+                LoadPreviousScene();
+            }
         }
+    }
+
+    public void toogleInteractableMainMenuButtons()
+    {
+        foreach (GameObject menuButton in menuButtons)
+        {
+            if (menuButton.GetComponent<UnityEngine.UI.Button>().IsInteractable() == true)
+            {
+                menuButton.GetComponent<UnityEngine.UI.Button>().interactable = false;
+            }
+            else //Else make it interactable
+            {
+                menuButton.GetComponent<UnityEngine.UI.Button>().interactable = true;
+            }
+        }
+
     }
 
     private void OnGUI()
@@ -97,20 +128,5 @@ public class MenuButtonBehaviour : MonoBehaviour {
         {
             Debug.Log("No hay escena previa");
         }
-    }
-
-    public void HidePopUp(string popUpName)
-    {
-        try
-        {
-            GameObject popUp = GameObject.Find(popUpName);
-            popUp.SetActive(false);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("No se puede ocultar el pop up" + popUpName);
-            Debug.LogException(e);
-        }
-        
     }
 }
