@@ -9,34 +9,52 @@ public class MenuButtonBehaviour : MonoBehaviour {
     public GUISkin guiSkin;
     public GameObject confirmationPanel;
     private GameObject[] menuButtons;
+    private GameObject[] popUps;
     private string currentScene;
 
     private void Awake()
     {
         menuButtons = GameObject.FindGameObjectsWithTag("MenuButton");
         currentScene = SceneManager.GetActiveScene().name;
+        popUps = GameObject.FindGameObjectsWithTag("PopUp");
+        Debug.Log(popUps.Length);
+        foreach (GameObject popUp in popUps)
+        {
+            popUp.SetActive(false);
+        }
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (currentScene.Equals("MainMenu")){
-                if (confirmationPanel.activeSelf)
-                {
-                    confirmationPanel.SetActive(false);
-                    toogleInteractableMainMenuButtons();
-                }
-                else
-                {
-                    confirmationPanel.SetActive(true);
-                    toogleInteractableMainMenuButtons();
-                }
+            if (currentScene.Equals("MainMenu"))
+            {
+                HidePopUps();
             }
             else
             {
                 LoadPreviousScene();
             }
+        }
+    }
+
+    private void HidePopUps()
+    {
+        Boolean noPopUp = true;
+        foreach (GameObject popUp in popUps)
+        {
+            if (popUp.activeSelf)
+            {
+                popUp.SetActive(false);
+                toogleInteractableMainMenuButtons();
+                noPopUp = false;
+            }
+        }
+        if (noPopUp)
+        {
+            confirmationPanel.SetActive(true);
+            toogleInteractableMainMenuButtons();
         }
     }
 
