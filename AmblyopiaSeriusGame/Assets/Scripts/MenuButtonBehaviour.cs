@@ -65,13 +65,20 @@ public class MenuButtonBehaviour : MonoBehaviour {
             if (menuButton.GetComponent<UnityEngine.UI.Button>().IsInteractable() == true)
             {
                 menuButton.GetComponent<UnityEngine.UI.Button>().interactable = false;
+                if(menuButton.GetComponent<EventButtonBehaviour>() != null)
+                {
+                    menuButton.GetComponent<EventButtonBehaviour>().toogleDisabled();
+                }
             }
             else //Else make it interactable
             {
                 menuButton.GetComponent<UnityEngine.UI.Button>().interactable = true;
+                if (menuButton.GetComponent<EventButtonBehaviour>() != null)
+                {
+                    menuButton.GetComponent<EventButtonBehaviour>().toogleDisabled();
+                }
             }
         }
-
     }
 
     private void OnGUI()

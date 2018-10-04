@@ -10,6 +10,7 @@ TagManager:
   - Figure
   - SceneScript
   - Coin
+  - MenuButtonLabel
   layers:
   - Default
   - TransparentFX

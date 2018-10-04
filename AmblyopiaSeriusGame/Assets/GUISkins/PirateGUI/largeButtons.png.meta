@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: c1e9cb7dc13160d469f9e655aeb396ce
+guid: fb2e8a8568c07c648ba3e7c8a91b3462
 TextureImporter:
   fileIDToRecycleName:
     21300000: largeButtons_0
+    21300002: largeButtons_1
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -109,9 +110,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 231
-        width: 969
-        height: 194
+        y: 256
+        width: 1079
+        height: 218
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,7 +120,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb4a7d31a2fd8ea4389951dfb1410887
+      spriteID: e58851f2966e53149b997a0d21d96581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: largeButtons_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1078
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e26d236144cd874ea47cab8690a8d08
       vertices: []
       indices: 
       edges: []
@@ -127,7 +148,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 49cd24875de34fc44a469c3166ae9e0b
+    spriteID: 2bc19741c05349b4f9bc678c0edaee57
     vertices: []
     indices: 
     edges: []
