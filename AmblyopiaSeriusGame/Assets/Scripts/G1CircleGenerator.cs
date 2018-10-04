@@ -30,8 +30,8 @@ public class G1CircleGenerator : MonoBehaviour {
     void Start () {
         circleRadius = theCircle.GetComponent<CircleCollider2D>().radius;
         theCoinGenerator = FindObjectOfType<G1CoinGenerator>() ;
-        circleIndexMax = 4;
-        circleIndexMin = 3;
+        circleIndexMax = 150/100;
+        circleIndexMin = 75/100;
         circleIndexBound = 1+ 1f;
         percentOfCoins = 100;
 	}
@@ -52,8 +52,8 @@ public class G1CircleGenerator : MonoBehaviour {
                     circleIndexMin = circleIndexBound;
                 }
 
-                circleScaleMin = thePlayer.transform.localScale.x * circleIndexMin;
-                circleScaleMax = thePlayer.transform.localScale.x * circleIndexMax;
+                circleScaleMin = circleIndexMin;
+                circleScaleMax = circleIndexMax;
                 circleScale = Random.Range(circleScaleMin, circleScaleMax);
 
                 newCircle.transform.position = transform.position;
