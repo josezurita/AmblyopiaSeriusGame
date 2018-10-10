@@ -5,7 +5,13 @@ using UnityEngine;
 public class DeathBehaviour : MonoBehaviour {
     public string mainMenuLevel;
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ExitButtonClick();
+        }
+    }
     public void RestartGame () {
         FindObjectOfType<G1GameManager>().Reset();
 	}
@@ -14,4 +20,5 @@ public class DeathBehaviour : MonoBehaviour {
     {
         new MenuButtonBehaviour().LoadPreviousScene();
     }
+    
 }
