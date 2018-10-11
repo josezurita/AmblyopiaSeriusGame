@@ -26,6 +26,7 @@ public static class GPGSIds
 {
         public const string leaderboard_catch_coins = "CgkIh_T77KUHEAIQAQ"; // <GPGSID>
         public const string leaderboard_find_the_stowaway = "CgkIh_T77KUHEAIQAg"; // <GPGSID>
+        public const string achievement_welcome_to_amblio = "CgkIh_T77KUHEAIQAw"; // <GPGSID>
 
 }
 
