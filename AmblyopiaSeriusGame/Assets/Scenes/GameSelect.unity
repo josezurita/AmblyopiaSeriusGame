@@ -145,8 +145,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5}
-  m_SizeDelta: {x: 520, y: 230.00003}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 450, y: 214.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &18057051
 MonoBehaviour:
@@ -173,7 +173,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 66
+    m_MaxSize: 135
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -225,8 +225,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5}
-  m_SizeDelta: {x: 520, y: 230.00003}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 534.95, y: 183.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55047817
 MonoBehaviour:
@@ -262,9 +262,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Los piratas de verdad usan parche paraidentificar otros piratas.
 
-
     Este es el momento en el que te conviertes en uno!
-
 
     Argh!'
 --- !u!222 &55047818
@@ -1609,7 +1607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &646818443
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3986,8 +3984,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 555014672}
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: toogleInteractableMainMenuButtons
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3995,6 +3993,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: Game2
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 646818442}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
