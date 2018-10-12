@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GooglePlayGames;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,7 +33,6 @@ public class DGScoreScript : MonoBehaviour {
         maxTime = newTime;
         currentTime = newTime;
         timeBar.value = CalculateTimePercentage();
-        SaveHighScore();
     }
 
     // Update is called once per frame
@@ -55,6 +55,16 @@ public class DGScoreScript : MonoBehaviour {
             Debug.Log("Nuevo puntaje máximo");
             highScore = score;
             PlayerPrefs.SetFloat("G2HighScore", highScore);
+            if (PlayGamesPlatform.Instance.localUser.authenticated)
+            {
+                // Note: make sure to add 'using GooglePlayGames'
+                PlayGamesPlatform.Instance.ReportScore(Mathf.RoundToInt(highScore),
+                    GPGSIds.leaderboard_find_the_stowaway,
+                    (bool success) =>
+                    {
+                        Debug.Log("(Lollygagger) Leaderboard update success: " + success);
+                    });
+            }
         }
         highScoreLabel.text = "High Score: " + Mathf.RoundToInt(highScore);
     }

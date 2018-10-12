@@ -119,4 +119,16 @@ public class GPlayBehaviour : MonoBehaviour {
             Debug.Log("Cannot show Achievements, not logged in");
         }
     }
+
+    public void ShowLeaderboards()
+    {
+        if (PlayGamesPlatform.Instance.localUser.authenticated)
+        {
+            PlayGamesPlatform.Instance.ShowLeaderboardUI();
+        }
+        else
+        {
+            Debug.Log("Cannot show leaderboard: not authenticated");
+        }
+    }
 }
