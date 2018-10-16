@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class G1GameManager : MonoBehaviour {
 
@@ -17,8 +18,13 @@ public class G1GameManager : MonoBehaviour {
     public DeathBehaviour theDeathScreen;
 
     private G1ScoreManager theScoreManager;
+    private PauseBehaviourScript thePauseMenu;
+
     public int scoreToGivePerCoin;
     public bool coinIsPicked=false;
+    public string isTutorialOn = "no";
+    public GameObject tutorial;
+    public GameObject tutorial1;
 
     // Use this for initialization
     void Start () {
@@ -26,10 +32,22 @@ public class G1GameManager : MonoBehaviour {
         playerStartPoint = thePlayer.transform.position;
 
         theScoreManager = FindObjectOfType<G1ScoreManager>();
-		
-	}
+
+
+        //Inicializador de Tutorial
+        PlayerPrefs.SetString("Tutorial", "si");
+
+        if (PlayerPrefs.HasKey("Tutorial"))
+        {
+            isTutorialOn = PlayerPrefs.GetString("Tutorial");
+            Debug.Log(PlayerPrefs.GetString("Tutorial")+ " hay Tutorial");
+        }
+
+    }
 	
 	void Update () {
+        isTutorialOn = PlayerPrefs.GetString("Tutorial");
+
         if (!PauseBehaviourScript.GameIsPaused)
         {
 
@@ -52,6 +70,26 @@ public class G1GameManager : MonoBehaviour {
                 }
             }
         }
+
+        if (isTutorialOn=="si")
+        {
+            tutorial.SetActive(true);
+            tutorial1.SetActive(true);
+            
+        }
+        if (!tutorial.activeSelf){
+            setTime(1);
+        }
+        else
+        {
+            setTime(0);
+        }
+
+
+        Debug.Log(PlayerPrefs.GetString("Tutorial") + " hay Tutorial");
+
+
+
     }
 
     public void RestartGame()
@@ -64,7 +102,9 @@ public class G1GameManager : MonoBehaviour {
     }
 
     public void Reset()
+
     {
+        Time.timeScale = 1f;
         theDeathScreen.gameObject.SetActive(false);
 
         circleList = FindObjectsOfType<G1CircleDestroyer>();
@@ -94,6 +134,13 @@ public class G1GameManager : MonoBehaviour {
 
         theScoreManager.scoreCount = 0;
         theScoreManager.scoreIncreasing = true;
+    }
+
+    public void setTime(int time)
+    {
+        Time.timeScale = (float)time;
+        Debug.Log("Time:" + time);
+        
     }
     /*
     public IEnumerator RestartGameCo()

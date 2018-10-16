@@ -22,7 +22,7 @@ public class G1Player : MonoBehaviour
 
     public ColliderDistance2D colldist;
 
-
+    public GameObject tutorial;
     public G1GameManager theGameManager;
     public G1CircleGenerator theCircleGenerator;
 
@@ -54,8 +54,12 @@ public class G1Player : MonoBehaviour
                     Debug.Log("Clic");
                     if (!isInside)
                     {
-                        die();
-                        Debug.Log("Murio por clic afuera");
+                        if (!tutorial.activeSelf)
+                        {
+                            die();
+                            Debug.Log("Murio por clic afuera");
+                        }
+                        
 
                     }
 
