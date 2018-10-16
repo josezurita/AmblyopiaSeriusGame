@@ -75,7 +75,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.5, y: -0.5}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
 --- !u!114 &114547359304370482
@@ -92,22 +92,22 @@ MonoBehaviour:
   magnitud: 0
   diferente: 0
   sprites:
-  - {fileID: 21300000, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300002, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300004, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300006, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300008, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300010, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300012, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300014, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300016, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300018, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300020, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300022, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300024, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300026, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300028, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
-  - {fileID: 21300030, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
+  - {fileID: 21300000, guid: afab65122fb27ea469727c08b8b3ca46, type: 3}
+  - {fileID: 21300000, guid: 6f86cc4be1bd99a4999759b623b8d399, type: 3}
+  - {fileID: 21300000, guid: 769744c44e6ff1041a150eef77180383, type: 3}
+  - {fileID: 21300000, guid: 370889474f33e8d4787700b286e9ee69, type: 3}
+  - {fileID: 21300000, guid: 92709a0adf4dfbe4f973ef89bc144580, type: 3}
+  - {fileID: 21300000, guid: 6c2b0aff12a1ec5459a61882019ffd15, type: 3}
+  - {fileID: 21300000, guid: 7e30d807b3892e6439114cd71ec1d22b, type: 3}
+  - {fileID: 21300000, guid: dd43fdb8e524c674884899685745d9e9, type: 3}
+  - {fileID: 21300000, guid: 059e345ec10d5f747a078698753654b7, type: 3}
+  - {fileID: 21300000, guid: a1c131275741f5b4a9643d43e24e4b52, type: 3}
+  - {fileID: 21300000, guid: 56b1ca250f4ff364499115b10047c697, type: 3}
+  - {fileID: 21300000, guid: e688365cefc23c740bc181b0f124c94f, type: 3}
+  - {fileID: 21300000, guid: 12bd53b2c6fa31642ab402c977c7190a, type: 3}
+  - {fileID: 21300000, guid: ada252e7fb5cf154dbdf56d991da6544, type: 3}
+  - {fileID: 21300000, guid: 783006bfe570a7a4b9ebc512d8e7a2df, type: 3}
+  - {fileID: 21300000, guid: 25f2a59eef908c04184a89ddc5b4994f, type: 3}
 --- !u!212 &212578572015714852
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -143,7 +143,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300004, guid: 5875f7f20a6c9764a9659fe781cf1de0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 12bd53b2c6fa31642ab402c977c7190a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
