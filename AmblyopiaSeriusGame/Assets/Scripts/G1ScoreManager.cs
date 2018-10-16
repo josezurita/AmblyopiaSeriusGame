@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using GooglePlayGames;
+
 
 public class G1ScoreManager : MonoBehaviour {
 
@@ -41,7 +43,7 @@ public class G1ScoreManager : MonoBehaviour {
         if (scoreCount > highScoreCount)
         {
             highScoreCount = scoreCount;
-            PlayerPrefs.SetFloat("HighScore",highScoreCount);//Guardar El HighScore
+            SaveHighScore();
         }
 
         scoreText.text = "Score: " + (int)scoreCount;
@@ -54,5 +56,21 @@ public class G1ScoreManager : MonoBehaviour {
     {
         scoreCount += pointsToAdd;
     }
+    private void SaveHighScore()
+    {
+        PlayerPrefs.SetFloat("HighScore", highScoreCount);//Guardar El HighScore
+        if (PlayGamesPlatform.Instance.localUser.authenticated)
+        {
+            // Note: make sure to add 'using GooglePlayGames'
+            PlayGamesPlatform.Instance.ReportScore(Mathf.RoundToInt(highScoreCount),
+                GPGSIds.leaderboard_catch_coins,
+                (bool success) =>
+                {
+                    Debug.Log("(Lollygagger) Leaderboard update success: " + success);
+                });
+        }
+
+    }
+
 
 }
