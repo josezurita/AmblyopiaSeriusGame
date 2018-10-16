@@ -15,7 +15,7 @@ public class G1Player : MonoBehaviour
     public float speedMilestoneCount;
     public float speedMilestoneCountStore;
 
-    private int level;
+    public  int level;
 
     public bool clickedOn = false;
     public bool isInside = false;
@@ -25,6 +25,8 @@ public class G1Player : MonoBehaviour
     public GameObject tutorial;
     public G1GameManager theGameManager;
     public G1CircleGenerator theCircleGenerator;
+    public G1ScoreManager theScoreManager;
+    private int actualHighScore;
 
     private void Start()
     {
@@ -54,11 +56,10 @@ public class G1Player : MonoBehaviour
                     Debug.Log("Clic");
                     if (!isInside)
                     {
-                        if (!tutorial.activeSelf)
-                        {
+                        
                             die();
                             Debug.Log("Murio por clic afuera");
-                        }
+                       
                         
 
                     }
@@ -122,6 +123,13 @@ public class G1Player : MonoBehaviour
         moveSpeed = moveSpeedStore;
         speedMilestoneCount = speedMilestoneCountStore;
         speedIncreaseMilestone = speedIncreaseMilestoneStore;
+
+        if (actualHighScore< theScoreManager.highScoreCount)
+        {
+            PlayerPrefs.SetFloat("HighScore", theScoreManager.highScoreCount);//Guardar El HighScore
+
+        }
+
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

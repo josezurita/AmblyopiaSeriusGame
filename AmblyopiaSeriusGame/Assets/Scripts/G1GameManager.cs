@@ -42,11 +42,27 @@ public class G1GameManager : MonoBehaviour {
             isTutorialOn = PlayerPrefs.GetString("Tutorial");
             Debug.Log(PlayerPrefs.GetString("Tutorial")+ " hay Tutorial");
         }
+        if (isTutorialOn == "si")
+        {
+            tutorial.SetActive(true);
+            tutorial1.SetActive(true);
+            coinIsPicked = true;
+
+        }
+        if (!tutorial.activeSelf)
+        {
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            setTime(0);
+            coinIsPicked = true;
+
+        }
 
     }
 	
 	void Update () {
-        isTutorialOn = PlayerPrefs.GetString("Tutorial");
 
         if (!PauseBehaviourScript.GameIsPaused)
         {
@@ -71,25 +87,7 @@ public class G1GameManager : MonoBehaviour {
             }
         }
 
-        if (isTutorialOn=="si")
-        {
-            tutorial.SetActive(true);
-            tutorial1.SetActive(true);
-            
-        }
-        if (!tutorial.activeSelf){
-            setTime(1);
-        }
-        else
-        {
-            setTime(0);
-        }
-
-
-        Debug.Log(PlayerPrefs.GetString("Tutorial") + " hay Tutorial");
-
-
-
+       
     }
 
     public void RestartGame()
@@ -138,8 +136,10 @@ public class G1GameManager : MonoBehaviour {
 
     public void setTime(int time)
     {
-        Time.timeScale = (float)time;
-        Debug.Log("Time:" + time);
+        float ftime;
+        ftime = (float)time;
+        Time.timeScale = ftime;
+        Debug.Log("Time:" + ftime);
         
     }
     /*

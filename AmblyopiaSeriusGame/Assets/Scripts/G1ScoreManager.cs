@@ -7,15 +7,19 @@ public class G1ScoreManager : MonoBehaviour {
 
     public Text scoreText;
     public Text highScoreText;
+    public Text levelUp;
 
     public float scoreCount;
     public float highScoreCount;
 
     public float pointsPerSecond;
 
+    public G1Player thePlayer;
+
     public bool scoreIncreasing;
     // Use this for initialization
     void Start () {
+        thePlayer = FindObjectOfType<G1Player>();
 
         if (PlayerPrefs.HasKey("HighScore"))
         {
@@ -42,6 +46,7 @@ public class G1ScoreManager : MonoBehaviour {
 
         scoreText.text = "Score: " + (int)scoreCount;
         highScoreText.text = "Highscore: " + (int)highScoreCount;
+        levelUp.text = "Tu nivel: " + (int)thePlayer.level ;
 
     }
 
