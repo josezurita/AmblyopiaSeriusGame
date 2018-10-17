@@ -24,7 +24,7 @@ public class DGScoreScript : MonoBehaviour {
         {
             highScore = PlayerPrefs.GetFloat("G2HighScore");
         }
-	}
+    }
 
     public void RestartTimer(float newTime)
     {
@@ -45,7 +45,8 @@ public class DGScoreScript : MonoBehaviour {
 
     private void Die()
     {
-        SaveHighScore();        
+        SaveHighScore();
+        PauseBehaviourScript.GameOver = true;
     }
 
     private void SaveHighScore()
