@@ -24,9 +24,17 @@
 
 public static class GPGSIds
 {
+        public const string achievement_score_1500_points_in_find_the_stowaway = "CgkIh_T77KUHEAIQCA"; // <GPGSID>
         public const string leaderboard_catch_coins = "CgkIh_T77KUHEAIQAQ"; // <GPGSID>
         public const string leaderboard_find_the_stowaway = "CgkIh_T77KUHEAIQAg"; // <GPGSID>
+        public const string achievement_score_500_points_in_find_the_stowaway = "CgkIh_T77KUHEAIQBg"; // <GPGSID>
         public const string achievement_welcome_to_amblio = "CgkIh_T77KUHEAIQAw"; // <GPGSID>
+        public const string achievement_try_catch_coins = "CgkIh_T77KUHEAIQBQ"; // <GPGSID>
+        public const string achievement_score_1500_points_in_catch_coins = "CgkIh_T77KUHEAIQCw"; // <GPGSID>
+        public const string achievement_score_1000_points_in_find_the_stowaway = "CgkIh_T77KUHEAIQBw"; // <GPGSID>
+        public const string achievement_score_500_points_in_catch_coins = "CgkIh_T77KUHEAIQCQ"; // <GPGSID>
+        public const string achievement_try_find_the_stowaway = "CgkIh_T77KUHEAIQBA"; // <GPGSID>
+        public const string achievement_score_1000_points_in_catch_coins = "CgkIh_T77KUHEAIQCg"; // <GPGSID>
 
 }
 
