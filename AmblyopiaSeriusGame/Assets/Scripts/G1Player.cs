@@ -49,7 +49,7 @@ public class G1Player : MonoBehaviour
             {
                 levelUp();
             }
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && theGameManager.isTutorialOn == "no")
             {
                 if (!theGameManager.coinIsPicked)
                 {
@@ -123,12 +123,12 @@ public class G1Player : MonoBehaviour
         moveSpeed = moveSpeedStore;
         speedMilestoneCount = speedMilestoneCountStore;
         speedIncreaseMilestone = speedIncreaseMilestoneStore;
-
         if (actualHighScore< theScoreManager.highScoreCount)
         {
             PlayerPrefs.SetFloat("HighScore", theScoreManager.highScoreCount);//Guardar El HighScore
 
         }
+        PauseBehaviourScript.GameOver = true;
 
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

@@ -61,6 +61,19 @@ public class G1GameManager : MonoBehaviour {
         }
 
     }
+
+    public void CambiarEstadoTutorial(bool estado)
+    {
+        if (estado == true)
+        {
+            isTutorialOn = "si";
+
+        }
+        else 
+        {
+            isTutorialOn = "no";
+        }
+    }
 	
 	void Update () {
 
