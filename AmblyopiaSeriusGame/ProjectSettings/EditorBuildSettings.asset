@@ -20,10 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameSelect.unity
     guid: 8083a47cf6ce9734594177a7ed05dede
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/RecordatorioParche.unity
     guid: cf0f201440b438f49bb61e8a24f83dab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Settings.unity
     guid: 7f4aadc03203aa24bb033ba756c825b7
   - enabled: 1

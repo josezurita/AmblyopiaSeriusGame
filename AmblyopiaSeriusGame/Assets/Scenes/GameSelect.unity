@@ -146,7 +146,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 214.4}
+  m_SizeDelta: {x: 450, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &18057051
 MonoBehaviour:
@@ -180,13 +180,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Los piratas de verdad usan parche para recoger monedas.
-
-
-    Este es el momento en el que te conviertes en uno!
-
-
-    Argh!'
+  m_Text: "Los piratas de verdad usan parche.\n\xA1Este es el momento en el que te
+    conviertes en uno!\n\xA1Argh!"
 --- !u!222 &18057052
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -226,7 +221,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 534.95, y: 183.2}
+  m_SizeDelta: {x: 450, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55047817
 MonoBehaviour:
@@ -260,11 +255,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Los piratas de verdad usan parche paraidentificar otros piratas.
-
-    Este es el momento en el que te conviertes en uno!
-
-    Argh!'
+  m_Text: "Los piratas de verdad usan parche.\n\xA1Este es el momento en el que te
+    conviertes en uno!\n\xA1Argh!"
 --- !u!222 &55047818
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -302,7 +294,7 @@ RectTransform:
   - {fileID: 1610437812}
   - {fileID: 826971090}
   m_Father: {fileID: 705119662}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -493,14 +485,14 @@ RectTransform:
   m_GameObject: {fileID: 248897967}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 705119662}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 60, y: -60}
+  m_AnchoredPosition: {x: 60, y: -60.000015}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.50000024, y: 0.5}
 --- !u!114 &248897969
@@ -1828,8 +1820,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 723099417}
-  - {fileID: 248897968}
   - {fileID: 230404561}
+  - {fileID: 248897968}
   - {fileID: 1894709126}
   - {fileID: 2031782093}
   - {fileID: 839357895}
@@ -1910,7 +1902,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -69}
-  m_SizeDelta: {x: 514.89, y: 105.399994}
+  m_SizeDelta: {x: 420, y: 105.399994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &723099418
 MonoBehaviour:
@@ -1933,7 +1925,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300156, guid: ba420b97b84565e4bb287e622a455d50, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2046,7 +2038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 18}
+  m_AnchoredPosition: {x: 0, y: 30}
   m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &826971091
@@ -2257,8 +2249,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 18}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 30}
+  m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &849198520
 MonoBehaviour:
@@ -2279,7 +2271,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0196aa0ba02cc05469ada4654df71200, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 12bd53b2c6fa31642ab402c977c7190a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2326,7 +2318,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 5}
-  m_SizeDelta: {x: 520, y: 230.00003}
+  m_SizeDelta: {x: 450, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &865751682
 MonoBehaviour:
@@ -3355,8 +3347,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -52.574993}
-  m_SizeDelta: {x: 0, y: -105.15}
+  m_AnchoredPosition: {x: 0, y: -58}
+  m_SizeDelta: {x: -130, y: -116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1505088166
 MonoBehaviour:
@@ -3390,7 +3382,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Juego 2
+  m_Text: Encuenta el diferente
 --- !u!222 &1505088167
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3565,8 +3557,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -4, y: -71}
-  m_SizeDelta: {x: -137.8, y: -110}
+  m_AnchoredPosition: {x: -0.0000019073486, y: -58}
+  m_SizeDelta: {x: -130, y: -116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1610437813
 MonoBehaviour:
@@ -4214,8 +4206,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 9.5}
-  m_SizeDelta: {x: -100, y: -45}
+  m_AnchoredPosition: {x: -4.000002, y: 4.630007}
+  m_SizeDelta: {x: -111.99999, y: -38.859985}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1970176482
 MonoBehaviour:

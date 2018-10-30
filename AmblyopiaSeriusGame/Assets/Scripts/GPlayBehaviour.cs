@@ -4,12 +4,16 @@ using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class GPlayBehaviour : MonoBehaviour {
 
     public GameObject gPlayBtn;
     public GameObject archBtn;
     public GameObject leaderBtn;
+    public GameObject exitBtn;
+    public GameObject gPlaySettingsBtn;
+    public Text authStatus;
 
     // Use this for initialization
     void Start () {
@@ -55,9 +59,11 @@ public class GPlayBehaviour : MonoBehaviour {
             archBtn.SetActive(false);
             leaderBtn.SetActive(false);
             gPlayBtn.SetActive(true);
+            exitBtn.SetActive(false);
+            gPlaySettingsBtn.SetActive(true);
             // Reset UI
             //signInButtonText.text = "Sign In";
-            //authStatus.text = "";
+            authStatus.text = "No conectado a Play Games";
         }
     }
 
@@ -69,6 +75,10 @@ public class GPlayBehaviour : MonoBehaviour {
             archBtn.SetActive(true);
             leaderBtn.SetActive(true);
             gPlayBtn.SetActive(false);
+            exitBtn.SetActive(true);
+            gPlaySettingsBtn.SetActive(false);
+            authStatus.text = "Conectado como " + Social.localUser.userName;
+
             if (Social.localUser.authenticated)
             {
                 // Unlock the "welcome" achievement, it is OK to
@@ -92,7 +102,7 @@ public class GPlayBehaviour : MonoBehaviour {
             // Change sign-in button text
             //signInButtonText.text = "Sign out";
             // Show the user's name
-            //authStatus.text = "Signed in as: " + Social.localUser.userName;
+            //authStatus.text = "Signed in as: " + c;
             Debug.Log("Signed in as: " + Social.localUser.userName);
         }
         else
@@ -101,6 +111,11 @@ public class GPlayBehaviour : MonoBehaviour {
             archBtn.SetActive(false);
             leaderBtn.SetActive(false);
             gPlayBtn.SetActive(true);
+            exitBtn.SetActive(false);
+            gPlaySettingsBtn.SetActive(true);
+            // Reset UI
+            //signInButtonText.text = "Sign In";
+            authStatus.text = "No conectado a Play Games";
             // Show failure message
             //signInButtonText.text = "Sign in";
             //authStatus.text = "Sign-in failed";
