@@ -35,7 +35,7 @@ public class G1GameManager : MonoBehaviour {
 
 
         //Inicializador de Tutorial
-        PlayerPrefs.SetString("Tutorial", "si");
+        //PlayerPrefs.SetString("Tutorial", "si");
 
         if (PlayerPrefs.HasKey("Tutorial"))
         {

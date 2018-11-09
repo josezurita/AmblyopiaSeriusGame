@@ -4299,7 +4299,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Moriste!
+  m_Text: Intentalo de nuevo
 --- !u!222 &1891764949
 CanvasRenderer:
   m_ObjectHideFlags: 0
