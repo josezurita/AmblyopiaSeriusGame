@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GooglePlayGames;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -34,10 +35,22 @@ public class DifferentScript : MonoBehaviour {
         EdgeRight.transform.position = new Vector3(ScreenSize.x, 0, 0);
         GameObject EdgeLeft = GameObject.Find("EdgeLeft");
         EdgeLeft.transform.position = new Vector3(-ScreenSize.x, 0, 0);
+
+        if (Social.localUser.authenticated)
+        {
+            // Unlock the "welcome" achievement, it is OK to
+            // unlock multiple times, only the first time matters.
+            PlayGamesPlatform.Instance.ReportProgress(
+                GPGSIds.achievement_try_find_the_stowaway,
+                100.0f, (bool result) =>
+                {
+                    Debug.Log("(Lollygagger) Welcome Unlock: " + result);
+                });
+        }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         if (!PauseBehaviourScript.GameIsPaused)
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

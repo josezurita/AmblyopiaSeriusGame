@@ -1,4 +1,5 @@
 ﻿using GooglePlayGames;
+using GooglePlayGames.BasicApi;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ public class DGScoreScript : MonoBehaviour {
         {
             highScore = PlayerPrefs.GetFloat("G2HighScore");
         }
+        highScoreLabel.text = "High Score: " + Mathf.RoundToInt(highScore);
     }
 
     public void RestartTimer(float newTime)
@@ -51,6 +53,7 @@ public class DGScoreScript : MonoBehaviour {
 
     private void SaveHighScore()
     {
+        float previousHighScore = getPreviousHighScore();
         if (score > highScore)
         {
             Debug.Log("Nuevo puntaje máximo");
@@ -67,7 +70,62 @@ public class DGScoreScript : MonoBehaviour {
                     });
             }
         }
+        if (PlayGamesPlatform.Instance.localUser.authenticated)
+        {
+            int difference = (int) (highScore - previousHighScore);
+            if (highScore - previousHighScore > 0 && previousHighScore < 500)
+            {
+                PlayGamesPlatform.Instance.IncrementAchievement(GPGSIds.achievement_score_500_points_in_find_the_stowaway, difference, (bool success) =>
+                {
+                    Debug.Log("500 points achievement increased: " + success);
+                });
+            }
+            if (highScore - previousHighScore > 0 && previousHighScore < 1000)
+            {
+                PlayGamesPlatform.Instance.IncrementAchievement(GPGSIds.achievement_score_1000_points_in_find_the_stowaway, difference, (bool success) =>
+                {
+                    Debug.Log("500 points achievement increased: " + success);
+                });
+            }
+            if (highScore - previousHighScore > 0 && previousHighScore < 1000)
+            {
+                PlayGamesPlatform.Instance.IncrementAchievement(GPGSIds.achievement_score_1000_points_in_find_the_stowaway, difference, (bool success) =>
+                {
+                    Debug.Log("500 points achievement increased: " + success);
+                });
+            }
+            if (highScore - previousHighScore > 0 && previousHighScore < 1500)
+            {
+                PlayGamesPlatform.Instance.IncrementAchievement(GPGSIds.achievement_score_1500_points_in_find_the_stowaway, difference, (bool success) =>
+                {
+                    Debug.Log("1000 points achievement increased: " + success);
+                });
+            }
+
+        }
+        // Increment the "sharpshooter" achievement
+        //PlayGamesPlatform.Instance.IncrementAchievement(
+        //       GPGSIds.achievement_sharpshooter,
+        //       1,
+        //       (bool success) => {
+        //           Debug.Log("(Lollygagger) Sharpshooter Increment: " +
+        //                 success);
+        //       });
         highScoreLabel.text = "High Score: " + Mathf.RoundToInt(highScore);
+    }
+
+    private float getPreviousHighScore()
+    {
+        float savedHighScore = 0f;
+        PlayGamesPlatform.Instance.LoadScores(GPGSIds.leaderboard_find_the_stowaway,
+             LeaderboardStart.PlayerCentered,
+             1,
+             LeaderboardCollection.Public,
+             LeaderboardTimeSpan.AllTime,
+         (LeaderboardScoreData data) => {
+             savedHighScore = float.Parse(data.PlayerScore.formattedValue);
+         });
+        return savedHighScore;
     }
 
     private float CalculateTimePercentage()
