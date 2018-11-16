@@ -117,7 +117,9 @@ public class DGScoreScript : MonoBehaviour {
     private float getPreviousHighScore()
     {
         float savedHighScore = 0f;
-        PlayGamesPlatform.Instance.LoadScores(GPGSIds.leaderboard_find_the_stowaway,
+        try
+        {
+            PlayGamesPlatform.Instance.LoadScores(GPGSIds.leaderboard_find_the_stowaway,
              LeaderboardStart.PlayerCentered,
              1,
              LeaderboardCollection.Public,
@@ -125,6 +127,11 @@ public class DGScoreScript : MonoBehaviour {
          (LeaderboardScoreData data) => {
              savedHighScore = float.Parse(data.PlayerScore.formattedValue);
          });
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("{0} Exception caught.", e);
+        }
         return savedHighScore;
     }
 
