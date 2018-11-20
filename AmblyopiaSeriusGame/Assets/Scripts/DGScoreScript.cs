@@ -80,13 +80,7 @@ public class DGScoreScript : MonoBehaviour {
                     Debug.Log("500 points achievement increased: " + success);
                 });
             }
-            if (highScore - previousHighScore > 0 && previousHighScore < 1000)
-            {
-                PlayGamesPlatform.Instance.IncrementAchievement(GPGSIds.achievement_score_1000_points_in_find_the_stowaway, difference, (bool success) =>
-                {
-                    Debug.Log("500 points achievement increased: " + success);
-                });
-            }
+          
             if (highScore - previousHighScore > 0 && previousHighScore < 1000)
             {
                 PlayGamesPlatform.Instance.IncrementAchievement(GPGSIds.achievement_score_1000_points_in_find_the_stowaway, difference, (bool success) =>

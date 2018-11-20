@@ -13,7 +13,7 @@ public class G1ScoreManager : MonoBehaviour {
 
     public float scoreCount;
     public float highScoreCount;
-
+    public float previousHighScore;
     public float pointsPerSecond;
 
     public G1Player thePlayer;
@@ -27,8 +27,10 @@ public class G1ScoreManager : MonoBehaviour {
         {
             highScoreCount = PlayerPrefs.GetFloat("HighScore");
         }
-		
-	}
+        previousHighScore = highScoreCount;
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -70,7 +72,35 @@ public class G1ScoreManager : MonoBehaviour {
                 });
         }
 
+        if (PlayGamesPlatform.Instance.localUser.authenticated)
+        {
+            int difference = (int)(highScoreCount - previousHighScore);
+            if (highScoreCount - previousHighScore > 0 && previousHighScore < 500)
+            {
+                PlayGamesPlatform.Instance.IncrementAchievement(GPGSIds.achievement_score_500_points_in_catch_coins, difference, (bool success) =>
+                {
+                    Debug.Log("500 points achievement increased: " + success);
+                });
+            }
+          
+            if (highScoreCount - previousHighScore > 0 && previousHighScore < 1000)
+            {
+                PlayGamesPlatform.Instance.IncrementAchievement(GPGSIds.achievement_score_1000_points_in_catch_coins, difference, (bool success) =>
+                {
+                    Debug.Log("500 points achievement increased: " + success);
+                });
+            }       
+            if (highScoreCount - previousHighScore > 0 && previousHighScore < 1500)
+            {
+                PlayGamesPlatform.Instance.IncrementAchievement(GPGSIds.achievement_score_1500_points_in_catch_coins, difference, (bool success) =>
+                {
+                    Debug.Log("1000 points achievement increased: " + success);
+                });
+            }
+
+        }
     }
+
 
 
 }
